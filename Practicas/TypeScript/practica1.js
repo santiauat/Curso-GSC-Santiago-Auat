@@ -8,8 +8,8 @@ var pila = /** @class */ (function () {
         this.elementos = [];
     }
     //Agregar elementos a la pila push
-    pila.prototype.push = function (a) {
-        this.elementos.push(a);
+    pila.prototype.push = function (elemento) {
+        this.elementos.push(elemento);
     };
     //Sacar elementos de la pila pop
     pila.prototype.pop = function () {
@@ -29,3 +29,34 @@ mipila.push(5);
 mipila.pop();
 console.log(mipila.pop());
 console.log(mipila.size());
+
+
+
+
+var pilaSinRepetidos = /** @class */ (function () {
+    function pilaSinRepetidos() {
+        this.elementos = [];
+    }
+    //Agregar elementos a la pila push
+    pilaSinRepetidos.prototype.push = function (elemento) {
+        if (this.elementos.indexOf(elemento) === -1) {    //Devuelve el índice de la ocurrencia encontrada, de lo contrario -1 si no se encuentra
+            this.elementos.push(elemento);
+        }
+    };
+    //Sacar elementos de la pila pop
+    pilaSinRepetidos.prototype.pop = function () {
+        this.elementos.pop();
+    };
+    pilaSinRepetidos.prototype.size = function () {
+        return this.elementos.length;
+    };
+    return pilaSinRepetidos;
+}());
+
+const pilaUnicos = new pilaSinRepetidos();
+pilaUnicos.push(1);
+pilaUnicos.push(2);
+pilaUnicos.push(1); 
+
+
+console.log(pilaUnicos.size()); 

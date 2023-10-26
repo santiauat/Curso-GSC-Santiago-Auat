@@ -3,15 +3,15 @@
 • Sacar elementos de la pila pop
 • Consultar la cantidad de elementos size */
 
-class pila {
- elementos: number[] = [];
+class pila<T> {
+ elementos: T[] = [];
  constructor(){
     this.elementos = [];
      }
 
      //Agregar elementos a la pila push
- push(a:number): void {
-    this.elementos.push(a);
+ push(elemento: T): void {
+    this.elementos.push(elemento);
  }
     //Sacar elementos de la pila pop
 pop(): void{
@@ -33,3 +33,26 @@ mipila.push(5);
 mipila.pop();
 console.log(mipila.pop());
 console.log(mipila.size());
+
+
+class pilaSinRepetidos<T>{
+    
+    elementos: T[] = [];
+    
+   
+        //Agregar elementos a la pila push
+    push(elemento:T): void {
+       if(this.elementos.indexOf(elemento) === -1){
+        this.elementos.push(elemento);
+       }
+    }
+
+       //Sacar elementos de la pila pop
+   pop(): void{
+       this.elementos.pop();
+   }
+   
+   size(): number{
+       return this.elementos.length;
+   }
+}
